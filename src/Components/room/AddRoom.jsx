@@ -39,18 +39,21 @@ export const AddRoom = () => {
         newRoom.roomType,
         newRoom.roomPrice
       );
-
-      if (success) {
+      if (success !== undefined) {
         setSuccessMessage("A new room was added to the database successfully");
         setNewRoom({ photo: null, roomType: "", roomPrice: "" });
         setImagePreview("");
-        setErrorMessage("");
+        // setSuccessMessage("");
       } else {
         setErrorMessage("Failed to add new room");
       }
     } catch (error) {
       setErrorMessage(error.message);
     }
+    setTimeout(() => {
+      setSuccessMessage("");
+      setErrorMessage("");
+    }, 3000);
   };
 
   return (
@@ -59,6 +62,18 @@ export const AddRoom = () => {
         <div className="row justify-content-center">
           <div className="col-md-8 col-lg-6">
             <h2 className="mt-5 mb-2">Add New Room</h2>
+            {/* Success message to display with alert box */}
+            {successMessage && (
+              <div className="alert alert-success fade show" role="alert">
+                {successMessage}
+              </div>
+            )}
+            {/* Error message */}
+            {errorMessage && (
+              <div className="alert alert-danger fade show" role="alert">
+                {errorMessage}
+              </div>
+            )}
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
                 <label htmlFor="roomType" className="form-label">

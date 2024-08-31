@@ -4,6 +4,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { AddRoom } from "./Components/room/AddRoom";
+import { ExistingRooms } from "./Components/room/ExistingRooms";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -11,6 +12,7 @@ function App() {
   return (
     <>
       <AddRoom />
+      <ExistingRooms />
     </>
   );
 }
